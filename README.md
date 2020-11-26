@@ -11,7 +11,7 @@ npm init svelte@next
 # https://svelte.dev/blog/whats-the-deal-with-sveltekit#When_can_I_start_using_it
 ```
 
-Finally, run this command in your project directory to set up GraphQL:
+Once that is set up, run this command in your project directory to set up GraphQL:
 ```sh
 npx use-preset babichjacob/svelte-add-graphql --no-ssh
 ```
