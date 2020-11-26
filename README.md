@@ -1,10 +1,10 @@
 <h1 align="center">🕸 Add GraphQL to Svelte</h1>
 
 ## ❓ What is this?
-This is an **experimental** command to run to add a GraphQL server (powered by [`graphql-helix`](https://github.com/contrawork/graphql-helix/)) to your Svelte project generated with `create-svelte`.
+This is an **experimental** command to run to add a GraphQL server (powered by [`graphql-helix`](https://github.com/contrawork/graphql-helix/)) to your SvelteKit project.
 
 ## 🛠 Usage
-You must start with a fresh copy of the official `create-svelte` template, which is currently created by running this command. **You must say yes to TypeScript preprocessing.**
+You must start with a fresh copy of the official SvelteKit template, which is currently created by running this command. **You must say yes to TypeScript preprocessing.**
 ```sh
 npm init svelte@next
 # By the way, please listen to its warnings that SvelteKit is an alpha project
