@@ -29,6 +29,8 @@ After the preset runs,
 
 * You [*cannot* use GraphQL subscriptions](https://github.com/babichjacob/svelte-add-graphql/issues/1).
 
+* You can apply *another* [Svelte Adder](https://github.com/babichjacob/svelte-adders) to your project for more functionality. 
+
 ## 😵 Help! I have a question
 [Create an issue](https://github.com/babichjacob/svelte-add-graphql/issues/new) and I'll try to help.
 
