@@ -1,17 +1,17 @@
 <h1 align="center">🕸 Add GraphQL to Svelte</h1>
 
 ## ❓ What is this?
-This is an **experimental** command to run to add a GraphQL server (powered by [`graphql-helix`](https://github.com/contrawork/graphql-helix/)) to your Svelte project generated with `create-svelte`.
+This is an **experimental** command to run to add a GraphQL server (powered by [`graphql-helix`](https://github.com/contrawork/graphql-helix/)) to your SvelteKit project.
 
 ## 🛠 Usage
-You must start with a fresh copy of the official `create-svelte` template, which is currently created by running this command. **You must say yes to TypeScript preprocessing.**
+You must start with a fresh copy of the official SvelteKit template, which is currently created by running this command. **You must say yes to TypeScript preprocessing.**
 ```sh
 npm init svelte@next
 # By the way, please listen to its warnings that SvelteKit is an alpha project
 # https://svelte.dev/blog/whats-the-deal-with-sveltekit#When_can_I_start_using_it
 ```
 
-Finally, run this command in your project directory to set up GraphQL:
+Once that is set up, run this command in your project directory to set up GraphQL:
 ```sh
 npx use-preset babichjacob/svelte-add-graphql --no-ssh
 ```
@@ -23,11 +23,13 @@ After the preset runs,
 
 * You can visit GraphiQL in the browser at the `/graphql` endpoint.
 
-* You can see an example of how you may set up resolver-specific authorization with the `contextFactory` line in `src/routes/graphql.ts` and the `authorization` argument in `src/routes/_graphql/schema.ts`.
+* You can see an example of how you may set up resolver-level authorization with the `contextFactory` line in `src/routes/graphql.ts` and the `authorization` argument in `src/routes/_graphql/schema.ts`.
 
 * The `/` route (in your `src/routes/index.svelte` file) will show an example of how to use your GraphQL API in `preload`.
 
 * You [*cannot* use GraphQL subscriptions](https://github.com/babichjacob/svelte-add-graphql/issues/1).
+
+* You can apply *another* [Svelte Adder](https://github.com/babichjacob/svelte-adders) to your project for more functionality. 
 
 ## 😵 Help! I have a question
 [Create an issue](https://github.com/babichjacob/svelte-add-graphql/issues/new) and I'll try to help.
