@@ -1,7 +1,7 @@
 import { Preset } from "use-preset";
 
 const moduleScript = `<script context="module">
-	export async function preload() {
+	export const load = async({ fetch }) => {
 		const query = \`
             query Doubled($x: Int) {
                 double(number: $x)
@@ -12,7 +12,7 @@ const moduleScript = `<script context="module">
 			x: 19,
 		};
 
-		const response = await this.fetch("/graphql", {
+		const response = await fetch("/graphql", {
 			body: JSON.stringify({ variables, query }),
 			headers: {
 				"Authorization": "Token ABC123",
@@ -26,8 +26,10 @@ const moduleScript = `<script context="module">
 		if (errors) throw new Error(errors.map(({ message }) => message).join("\\n"));
 
 		return {
-			doubled: data.double,
-		}
+			props: {
+				doubled: data.double,
+			},
+		};
 	}
 </script>
 `;

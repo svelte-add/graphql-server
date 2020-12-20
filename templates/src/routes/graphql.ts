@@ -3,44 +3,44 @@ import { processRequest } from "graphql-helix/dist/process-request";
 import { renderGraphiQL } from "graphql-helix/dist/render-graphiql";
 import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql";
 
-import { defaultQuery, schema } from "./_graphql/schema";
+import { createSchema, defaultQuery } from "./_graphql/schema";
+
+const schemaPromise = createSchema();
 
 const respond = async (request) => {
-    console.warn({ endpointRequest: request });
+	if (shouldRenderGraphiQL(request)) return {
+		body: renderGraphiQL({
+			defaultQuery,
+		}),
+		headers: { "Content-Type": "text/html" },
+		status: 200,
+	};
 
-    if (shouldRenderGraphiQL(request)) return {
-        body: renderGraphiQL({
-            defaultQuery,
-        }),
-        headers: { "Content-Type": "text/html" },
-        status: 200,
-    };
+	// Workaround for a bug with this.fetch (I assume) in SvelteKit
+	if (typeof request.body === "string") request.body = JSON.parse(request.body);
 
-    // Workaround for a bug with this.fetch (I assume) in SvelteKit
-    if (typeof request.body === "string") request.body = JSON.parse(request.body);
+	const parameters = getGraphQLParameters(request);
+	const result = await processRequest({
+		...parameters,
+		// For example, auth information is put in context for the resolver
+		contextFactory: () => ({ authorization: request.headers.authorization }),
+		request,
+		schema: await schemaPromise,
+	});
 
-    const parameters = getGraphQLParameters(request);
-    const result = await processRequest({
-        ...parameters,
-        // For example, auth information is put in context for the resolver
-        contextFactory: () => ({ authorization: request.headers.authorization }),
-        request,
-        schema,
-    });
+	if (result.type === "RESPONSE") return {
+		body: result.payload,
+		headers: result.headers,
+		status: result.status,
+	};
 
-    if (result.type === "RESPONSE") return {
-        body: result.payload,
-        headers: result.headers,
-        status: result.status,
-    };
-
-    return {
-        // Think you could help?
-        // https://github.com/babichjacob/svelte-add-graphql/issues/1
-        body: "svelte-add-graphql doesn't support multipart responses or event streams",
-        headers: {},
-        status: 501,
-    };
+	return {
+		// Think you could help?
+		// https://github.com/babichjacob/svelte-add-graphql/issues/1
+		body: "svelte-add-graphql doesn't support multipart responses or event streams",
+		headers: {},
+		status: 501,
+	};
 };
 
 export const del = ({ body, query }, { headers }) => respond({ body, headers, method: "DELETE", query });
