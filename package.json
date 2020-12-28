@@ -1,5 +1,5 @@
 {
-    "name": "svelte-add-graphql",
+    "name": "svelte-add/graphql",
     "private": true,
     "version": "2020.12.19",
     "description": "A command to add a GraphQL server to your SvelteKit project",
@@ -14,10 +14,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/babichjacob/svelte-add-graphql.git"
+        "url": "https://github.com/svelte-add/graphql.git"
     },
-    "bugs": "https://github.com/babichjacob/svelte-add-graphql/issues",
-    "homepage": "https://github.com/babichjacob/svelte-add-graphql",
+    "bugs": "https://github.com/svelte-add/graphql/issues",
+    "homepage": "https://github.com/svelte-add/graphql",
     "preset": "preset.ts",
     "devDependencies": {
         "use-preset": "^0.2.11"
