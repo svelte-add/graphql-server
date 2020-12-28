@@ -13,7 +13,7 @@ npm init svelte@next
 
 Once that is set up, run this command in your project directory to set up GraphQL:
 ```sh
-npx use-preset babichjacob/svelte-add-graphql --no-ssh
+npx use-preset svelte-add/graphql --no-ssh
 ```
 
 After the preset runs,
@@ -27,15 +27,15 @@ After the preset runs,
 
 * The `/` route (in your `src/routes/index.svelte` file) will show an example of how to use your GraphQL API in `preload`.
 
-* You [*cannot* use GraphQL subscriptions](https://github.com/babichjacob/svelte-add-graphql/issues/1).
+* You [*cannot* use GraphQL subscriptions](https://github.com/svelte-add/graphql/issues/1).
 
-* You can apply *another* [Svelte Adder](https://github.com/babichjacob/svelte-adders) to your project for more functionality. 
+* You can apply *another* [Svelte Adder](https://github.com/svelte-add/svelte-adders) to your project for more functionality. 
 
 ## 😵 Help! I have a question
-[Create an issue](https://github.com/babichjacob/svelte-add-graphql/issues/new) and I'll try to help.
+[Create an issue](https://github.com/svelte-add/graphql/issues/new) and I'll try to help.
 
 ## 😡 Fix! There is something that needs improvement
-[Create an issue](https://github.com/babichjacob/svelte-add-graphql/issues/new) or [pull request](https://github.com/babichjacob/svelte-add-graphql/pulls) and I'll try to fix.
+[Create an issue](https://github.com/svelte-add/graphql/issues/new) or [pull request](https://github.com/svelte-add/graphql/pulls) and I'll try to fix.
 
 These are new tools, so there are likely to be problems in this project. Thank you for bringing them to my attention or fixing them for me.
 
