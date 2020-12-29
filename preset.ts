@@ -34,12 +34,12 @@ const moduleScript = `<script context="module">
 </script>
 `;
 
-Preset.setName("svelte-add-graphql");
+Preset.setName("svelte-add/graphql");
 
 Preset.extract().withTitle("Adding GraphQL endpoint and schema");
 
 Preset.editNodePackages().addDev("graphql", "^15.4.0").withTitle("Installing `graphql`");
-Preset.editNodePackages().addDev("graphql-helix", "^1.0.0").withTitle("Installing `graphql-helix`");
+Preset.editNodePackages().addDev("graphql-helix", "^1.2.0").withTitle("Installing `graphql-helix`");
 
 Preset.group((preset) => {
     preset.edit(["src/routes/index.svelte"]).update((contents) => `${moduleScript}${contents}`).withTitle("Add preload function");
