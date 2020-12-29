@@ -1,4 +1,4 @@
-import { Preset } from "use-preset";
+import { Preset } from "apply";
 
 const moduleScript = `<script context="module">
 	export const load = async({ fetch }) => {
