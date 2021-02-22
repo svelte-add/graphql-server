@@ -39,6 +39,7 @@ Preset.setName("svelte-add/graphql");
 Preset.extract().withTitle("Adding GraphQL endpoint and schema");
 
 Preset.editNodePackages().addDev("graphql", "^15.5.0").withTitle("Installing `graphql`");
+Preset.editNodePackages().addDev("graphql-helix", "^1.2.3").withTitle("Installing `graphql-helix`");
 
 Preset.group((preset) => {
     preset.edit(["src/routes/index.svelte"]).update((contents) => `${moduleScript}${contents}`).withTitle("Add preload function");
@@ -57,6 +58,6 @@ Preset.group((preset) => {
         const p = `<p>Visit the <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>`;
         return contents.replace(p, `${p}\n\t<p>Visit <a href="/graphql">GraphiQL</a> to explore the API.</p>`);
     }).withTitle("Add a link to GraphiQL on the homepage");
-}).withTitle("Show how to query the GraphQL API");
+}).withTitle("Showing how to query the GraphQL API");
 
 Preset.installDependencies().ifUserApproves();
