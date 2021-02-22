@@ -36,8 +36,8 @@ const respond = async (request) => {
 
 	return {
 		// Think you could help?
-		// https://github.com/babichjacob/svelte-add-graphql/issues/1
-		body: "svelte-add-graphql doesn't support multipart responses or event streams",
+		// https://github.com/svelte-add/graphql/issues/1
+		body: "svelte-add/graphql doesn't support multipart responses or event streams",
 		headers: {},
 		status: 501,
 	};
