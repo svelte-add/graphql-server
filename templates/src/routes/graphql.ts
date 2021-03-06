@@ -1,7 +1,7 @@
-import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters";
-import { processRequest } from "graphql-helix/dist/process-request";
-import { renderGraphiQL } from "graphql-helix/dist/render-graphiql";
-import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql";
+import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters.js";
+import { processRequest } from "graphql-helix/dist/process-request.js";
+import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js";
+import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql.js";
 
 import { createSchema, defaultQuery } from "./_graphql/schema";
 
