@@ -16,9 +16,6 @@ const respond = async (request) => {
 		status: 200,
 	};
 
-	// Workaround for a bug with this.fetch (I assume) in SvelteKit
-	if (typeof request.body === "string") request.body = JSON.parse(request.body);
-
 	const parameters = getGraphQLParameters(request);
 	const result = await processRequest({
 		...parameters,
