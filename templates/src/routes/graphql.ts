@@ -20,7 +20,7 @@ const respond = async (request) => {
 	const result = await processRequest({
 		...parameters,
 		// For example, auth information is put in context for the resolver
-		contextFactory: () => ({ authorization: request.headers.authorization }),
+		contextFactory: () => ({ authorization: request.headers["Authorization"] }),
 		request,
 		schema: await schemaPromise,
 	});
