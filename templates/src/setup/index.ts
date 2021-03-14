@@ -1,3 +1,3 @@
-export const prepare = (headers) => {
+export const prepare = ({ headers }) => {
     return { context: { headers } };
 }

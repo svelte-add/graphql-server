@@ -3,7 +3,7 @@ import { processRequest } from "graphql-helix/dist/process-request.js";
 import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js";
 import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql.js";
 
-import { createSchema, defaultQuery } from "./_graphql/schema";
+import { createSchema, defaultQuery } from "../graphql/schema";
 
 const schemaPromise = createSchema();
 
