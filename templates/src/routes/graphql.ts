@@ -1,4 +1,4 @@
-import type { RequestHandler } from "@sveltejs/kit";
+import type { RequestHandler, Response } from "@sveltejs/kit";
 import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters.js";
 import { processRequest } from "graphql-helix/dist/process-request.js";
 import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js";
@@ -8,7 +8,7 @@ import { createSchema, defaultQuery } from "../graphql/schema";
 
 const schemaPromise = createSchema();
 
-const respond = async (request) => {
+const respond = async (request): Promise<Response> => {
 	if (shouldRenderGraphiQL(request)) return {
 		body: renderGraphiQL({
 			defaultQuery,
@@ -41,8 +41,8 @@ const respond = async (request) => {
 	};
 };
 
-export const del = ({ body, query }, { headers }) => respond({ body, headers, method: "DELETE", query });
-export const get = ({ body, query }, { headers }) => respond({ body, headers, method: "GET", query });
-export const head = ({ body, query }, { headers }) => respond({ body, headers, method: "HEAD", query });
-export const post = ({ body, query }, { headers }) => respond({ body, headers, method: "POST", query });
-export const put = ({ body, query }, { headers }) => respond({ body, headers, method: "PUT", query });
+export const del: RequestHandler = ({ body, query, context: { headers } }) => respond({ body, headers, method: "DELETE", query });
+export const get: RequestHandler = ({ body, query, context: { headers } }) => respond({ body, headers, method: "GET", query });
+export const head: RequestHandler = ({ body, query, context: { headers } }) => respond({ body, headers, method: "HEAD", query });
+export const post: RequestHandler = ({ body, query, context: { headers } }) => respond({ body, headers, method: "POST", query });
+export const put: RequestHandler = ({ body, query, context: { headers } }) => respond({ body, headers, method: "PUT", query });
