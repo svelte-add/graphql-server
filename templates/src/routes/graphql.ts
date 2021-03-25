@@ -1,3 +1,4 @@
+import type { RequestHandler } from "@sveltejs/kit";
 import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters.js";
 import { processRequest } from "graphql-helix/dist/process-request.js";
 import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js";
@@ -20,7 +21,7 @@ const respond = async (request) => {
 	const result = await processRequest({
 		...parameters,
 		// For example, auth information is put in context for the resolver
-		contextFactory: () => ({ authorization: request.headers["Authorization"] }),
+		contextFactory: () => ({ authorization: request.headers["Authorization"] ?? request.headers["authorization"] }),
 		request,
 		schema: await schemaPromise,
 	});

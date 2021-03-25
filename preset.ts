@@ -1,4 +1,4 @@
-import { Preset } from "apply";
+import { Preset, color } from "apply";
 
 const moduleScript = `<script context="module">
 	export const load = async({ fetch }) => {
@@ -37,7 +37,11 @@ const moduleScript = `<script context="module">
 </script>
 `;
 
+
 Preset.setName("svelte-add/graphql");
+
+const EXCLUDE_EXAMPLES = "excludeExamples";
+Preset.option(EXCLUDE_EXAMPLES, false);
 
 Preset.extract().withTitle("Adding GraphQL endpoint and schema");
 
@@ -48,7 +52,7 @@ Preset.group((preset) => {
 	preset.edit(["src/routes/index.svelte"]).update((contents) => `${moduleScript}${contents}`).withTitle("Add preload function");
 	
 	preset.edit(["src/routes/index.svelte"]).update((contents) => {
-		const import_ = "import Counter from '$components/Counter.svelte';";
+		const import_ = "import Counter from '$lib/Counter.svelte';";
 		return contents.replace(import_, `${import_}\n\texport let doubled;`);
 	}).withTitle("Ask for prop from preload");
 	
@@ -61,6 +65,6 @@ Preset.group((preset) => {
 		const p = `<p>Visit the <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>`;
 		return contents.replace(p, `${p}\n\t<p>Visit <a href="/graphql">GraphiQL</a> to explore the API.</p>`);
 	}).withTitle("Add a link to GraphiQL on the homepage");
-}).withTitle("Showing how to query the GraphQL API");
+}).withTitle("Showing how to query the GraphQL API").ifNotOption(EXCLUDE_EXAMPLES);
 
-Preset.installDependencies().ifUserApproves();
+Preset.instruct(`Run ${color.magenta("npm install")}, ${color.magenta("pnpm install")}, or ${color.magenta("yarn")} to install dependencies`);
