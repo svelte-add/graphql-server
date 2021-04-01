@@ -28,7 +28,7 @@ const respond = async (request): Promise<Response> => {
 
 	const headers = {};
 
-	for (let x = 0; x < result.headers.length; x++) {
+	for (let x = result.headers.length;x--;) {
 		headers[result.headers[x].name] = result.headers[x].value;
 	}
 
