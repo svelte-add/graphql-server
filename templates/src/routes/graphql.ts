@@ -26,17 +26,19 @@ const respond = async (request): Promise<Response> => {
 		schema: await schemaPromise,
 	});
 
-	const headers = {};
+	if (result.type === 'RESPONSE') {
+		const headers = {};
 
-	for (let x = result.headers.length;x--;) {
-		headers[result.headers[x].name] = result.headers[x].value;
+		for (const { name, value } of result.headers) {
+			headers[name] = value;
+		}
+
+		return {
+			body: result.payload,
+			headers,
+			status: result.status
+		};
 	}
-
-	if (result.type === "RESPONSE") return {
-		body: result.payload,
-		headers,
-		status: result.status,
-	};
 
 	return {
 		// Think you could help?
