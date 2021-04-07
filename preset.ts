@@ -13,7 +13,7 @@ const moduleScript = `<script context="module">
 		};
 
 		const response = await fetch("/graphql", {
-			body: { query, variables },
+			body: JSON.stringify({ query, variables }),
 			headers: {
 				"Authorization": "Token ABC123",
 				"Content-Type": "application/json",
