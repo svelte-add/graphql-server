@@ -11,7 +11,7 @@ npm init svelte@next
 
 Once that is set up, run this command in your project directory to set up GraphQL:
 ```sh
-npx svelte-add graphql
+npx svelte-add graphql-server
 ```
 
 After the preset runs,
