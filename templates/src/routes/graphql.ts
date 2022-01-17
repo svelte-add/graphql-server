@@ -1,16 +1,17 @@
-import type { RequestHandler, Response } from "@sveltejs/kit";
-import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters.js";
-import { processRequest } from "graphql-helix/dist/process-request.js";
-import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js";
-import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql.js";
-
+import { RequestHandler, Response } from "@sveltejs/kit";
+import {
+    getGraphQLParameters,
+    processRequest,
+    renderGraphiQL,
+    shouldRenderGraphiQL
+} from "graphql-helix";
 import { createSchema, defaultQuery } from "../graphql/schema";
 
 const schemaPromise = createSchema();
 
 const respond = async (request): Promise<Response> => {
 	// Workaround for a bug with body parsing in SvelteKit
-	if (typeof request.body === "string") request.body = JSON.parse(request.body);
+	// if (typeof request.body === "string") request.body = JSON.parse(request.body);
 
 	if (shouldRenderGraphiQL(request)) return {
 		body: renderGraphiQL({
@@ -51,8 +52,8 @@ const respond = async (request): Promise<Response> => {
 	};
 };
 
-export const del: RequestHandler = ({ body, headers, query }) => respond({ body, headers, method: "DELETE", query });
-export const get: RequestHandler = ({ body, headers, query }) => respond({ body, headers, method: "GET", query });
-export const head: RequestHandler = ({ body, headers, query }) => respond({ body, headers, method: "HEAD", query });
-export const post: RequestHandler = ({ body, headers, query }) => respond({ body, headers, method: "POST", query });
-export const put: RequestHandler = ({ body, headers, query }) => respond({ body, headers, method: "PUT", query });
+export const del: RequestHandler = ({ body, headers, method, url }) => respond({ body, headers, method, query: url.searchParams });
+export const get: RequestHandler = ({ body, headers, method, url }) => respond({ body, headers, method, query: url.searchParams });
+export const head: RequestHandler = ({ body, headers, method, url }) => respond({ body, headers, method, query: url.searchParams });
+export const post: RequestHandler = ({ body, headers, method, url }) => respond({ body, headers, method, query: url.searchParams });
+export const put: RequestHandler = ({ body, headers, method, url }) => respond({ body, headers, method, query: url.searchParams });
